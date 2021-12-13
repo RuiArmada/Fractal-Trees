@@ -27,5 +27,14 @@ function branch(len,wei) {
             rotate(-30);
             branch(0.7*len,0.7*wei);
         pop();
+    } else {
+        var rng = random(0,1);
+        if(rng < 0.25) {
+            fill(0,200,0);
+            ellipse(0,0,14,6);
+        } else {
+            fill(100,3,0);
+            ellipse(16,16,16,16);
+        }
     }
 }
