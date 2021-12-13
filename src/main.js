@@ -1,4 +1,4 @@
-import './lib';
+import '../lib';
 
 function setup() {
     createCanvas(400,400);
