@@ -4,7 +4,7 @@ Java Script based algorithm, destined to draw Fractal Trees.
 
 ## How to Run
 
-Copy and paste the code into [P5.js](https://editor.p5js.org/) and click the Run button.
+Just open the fractal_trees.html in a browser and thats it.
 
 ## Output
 
