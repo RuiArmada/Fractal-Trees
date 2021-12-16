@@ -1,40 +1,82 @@
-import '../lib';
+// Fractal Trees
+
+var brownR = 83;
+var brownG = 53;
+var brownB = 10;
+
+var greenR = 30;
+var greenG = 147; 
+var greenB = 45;
+
+var redR = 100;
+var redG = 3; 
+var redB = 0;
 
 function setup() {
-    createCanvas(400,400);
-    angleMode(DEGREES);
-    noLoop();
+  createCanvas(windowWidth, windowHeight);
+  randomSeed(42);
+  noLoop();
 }
 
 function draw() {
-    background(220,220,220);
-    translate(width/2,height);
-    stroke(0,0,0);
-    branch(width/4,20);
+  background(240, 248, 255);
+  stroke(brownR, brownG, brownB);
+  strokeWeight(20);
+
+  push();
+    translate(width/4, height);
+    branch(width/10, 10, PI/6);
+  pop();
+
+  push();
+    translate(2*width/3, height);
+    branch(width/10, 10, PI/7);
+  pop();
 }
 
-function branch(len,wei) {
-    strokeWeight(wei);
-    line(0,0,0,len);
-    translate(0,-len);
-    if(len > 4) {
-        push();
-            rotate(30);
-            branch(0.7*len,0.7*wei);
-        pop();
-        
-        push();
-            rotate(-30);
-            branch(0.7*len,0.7*wei);
-        pop();
-    } else {
-        var rng = random(0,1);
-        if(rng < 0.25) {
-            fill(0,200,0);
-            ellipse(0,0,14,6);
-        } else {
-            fill(100,3,0);
-            ellipse(16,16,16,16);
-        }
+function branch(len,wei,ang) {
+  line(0, 0, 0, -len);
+  translate(0,-len);
+  stroke(brownR, brownG, brownB);
+  strokeWeight(wei);
+
+  if (len > 4) {
+
+    push();
+      rotate(ang);
+      branch(len * 0.7, wei * 0.7, ang);
+    pop();
+
+    push();
+      rotate(-ang-PI/12);
+      branch(len * 0.7, wei * 0.7, ang);
+    pop();
+
+    push();
+      rotate(-ang);
+      branch(len * 0.3, wei * 0.7, ang);
+    pop();
+
+    push();
+      rotate(ang+PI/9);
+      branch(len * 0.3, wei * 0.7, ang);
+    pop();
+
+  } else {
+
+    x = random(0,1);
+
+    if (x > 0.85) { 
+      fill(greenR, greenG, greenB);
+      noStroke();
+      ellipse(0, 0, 14, 6);
+
+    } else if (x < 0.01) {
+      fill(redR, redG, redB);
+      noStroke();
+
+      ellipse(16,16,16,16);
     }
+  }
 }
+
