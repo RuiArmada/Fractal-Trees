@@ -1,5 +1,3 @@
-// Fractal Trees
-
 var brownR = 83;
 var brownG = 53;
 var brownB = 10;
